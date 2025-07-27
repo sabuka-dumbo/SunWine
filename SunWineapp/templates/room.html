@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/booking.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/room.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="{% url 'room' room.id %}">
+        <div class="part1">
+            <h1 class="title1">Sunwine Hotel</h1>
+        </div>
+
+        <div class="part2">
+            <div class="search">
+                <div class="search-inside">
+                    <div class="field-group">
+                    <label>Check-in</label>
+                    <input type="date" required>
+                    </div>
+                    <div class="field-group">
+                    <label>Check-out</label>
+                    <input type="date" required>
+                    </div>
+                    <div class="field-group">
+                    <label>Guests</label>
+                    <select required>
+                        <option>1 Adult, 0 Kids</option>
+                        <option>2 Adults, 0 Kids</option>
+                        <option>1 Adult, 1 Kid</option>
+                        <option>2 Adults, 1 Kid</option>
+                        <option>1 Adult, 2 Kids</option>
+                        <option>2 Adults, 2 Kids</option>
+                        <option>3 Adults, 0 Kids</option>
+                        <option>3 Adults, 1 Kid</option>
+                        <option>2 Adults, 3 Kids</option>
+                        <!-- Total 3–4 persons -->
+                    </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part3">
+            <img src="" alt="" class="part3-image">
+
+            <div class="part3-div1">
+                <h1 class="p3-title1">{{ room.room_title }}</h1>
+                <h1 class="p3-title2">description here</h1>
+                <h1 class="p3-title2">description here</h1>
+                <h1 class="p3-title2">description here</h1>
+                <h1 class="p3-title2">description here</h1>
+                <h1 class="p3-title2">description here</h1>
+                <h1 class="p3-title2">description here</h1>
+                    
+                <button class="p3-button">Check in the room</button>
+            </div>
+        </div>
+            
+        <h1 class="part3-description">{{ room.description }}</h1>
+
+        <div class="part4">
+            <img src="" alt="" class="p4-image1">
+            <img src="" alt="" class="p4-image2">
+            <img src="" alt="" class="p4-image3">
+        </div>
+    </form>
+{% endblock %}

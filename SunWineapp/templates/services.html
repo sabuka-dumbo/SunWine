@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/services.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="service-div">
+        <h1 class="service-title">{{ service1.service_title }}</h1>
+        <h1 class="service-description">{{ service1.service_description }}</h1>
+        <img src="{{ service1.service_image.url }}" alt="" class="service-image">
+    </div>
+
+    <div class="service-div">
+        <h1 class="service-title">{{ service2.service_title }}</h1>
+        <h1 class="service-description">{{ service2.service_description }}</h1>
+        <img src="{{ service2.service_image.url }}" alt="" class="service-image">
+    </div>
+
+    <div class="service-div">
+        <h1 class="service-title">{{ service3.service_title }}</h1>
+        <h1 class="service-description">{{ service3.service_description }}</h1>
+        <img src="{{ service3.service_image.url }}" alt="" class="service-image">
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <script src="{% static 'js/services.js' %}"></script>
+{% endblock %}

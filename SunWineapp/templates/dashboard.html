@@ -1,0 +1,484 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <h1 class="title1">SunWine</h1>
+
+    <div class="dashboard">
+        <h1 class="title2">Dashboard</h1>
+
+        <div class="part1">
+            <div class="div1">
+                <div style="width: max-content; height: 100%; position: absolute; left: 50%; transform: translateX(-50%);">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="div2"></div>
+            <div class="div3">
+                <h1 class="title19">Today review:</h1>
+                <h1 class="title20">Today’s check-ins: 5 check-in</h1>
+                <h1 class="title20">Today’s check-outs: 5 check-out</h1>
+                <h1 class="title20">Today’s occupancy rate: 50%</h1>
+                <h1 class="title20">Total revenue today: 500$</h1>
+            </div>
+        </div>
+
+        <div class="part2">
+            <div class="part2-mainpart">
+                <h1 class="title3">Guest list:</h1>
+                <h1 class="title4">name</h1>
+                <h1 class="title5">check-in</h1>
+                <h1 class="title6">check-out</h1>
+                <h1 class="title7">room</h1>
+                <h1 class="title8">paid</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+        </div>
+
+        <div class="part2">
+            <div class="part2-mainpart">
+                <h1 class="title3" style="font-size: 12px;">Upcoming check-ins:</h1>
+                <h1 class="title4">name</h1>
+                <h1 class="title5">check-in</h1>
+                <h1 class="title6">check-out</h1>
+                <h1 class="title7">room</h1>
+                <h1 class="title8">paid</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+                        <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+                        <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+
+            <div class="part2-mainpart">
+                <img src="" alt="" class="image1">
+                <h1 class="title4">Saba Dumbadze</h1>
+                <h1 class="title5">2025/7/25</h1>
+                <h1 class="title6">2025/7/30</h1>
+                <h1 class="title7">#205</h1>
+                <h1 class="title8">Yes</h1>
+            </div>
+        </div>
+
+        <div class="part3">
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Check-in managment:</h1>
+                <h1 class="title10">check-in</h1>
+                <h1 class="title11">check-out</h1>
+                <h1 class="title12">room</h1>
+                <h1 class="title13">paid</h1>
+                <h1 class="title14">payment</h1>
+                <h1 class="title15">check-out</h1>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <button class="button1">Pay</button>
+                <button class="button2">Check-out</button>
+            </div>
+        </div>
+
+        <div class="part3">
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Check-in managment:</h1>
+                <h1 class="title10">check-in</h1>
+                <h1 class="title11">check-out</h1>
+                <h1 class="title12">room</h1>
+                <h1 class="title13">paid</h1>
+                <h1 class="title14">price</h1>
+                <h1 class="title15">check-out</h1>
+            </div>
+
+            <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div> <div class="part3-mainpart">
+                <h1 class="title9" style="font-size: 15px;">Room #205</h1>
+                <h1 class="title10">2025/07/26</h1>
+                <h1 class="title11">2025/07/30</h1>
+                <h1 class="title12">#205</h1>
+                <h1 class="title13">No</h1>
+                <h1 class="title16">300$</h1>
+                <button class="button2" disabled>Checked-out</button>
+            </div>
+        </div>
+
+        <div class="part4">
+            <h1 class="title17">New room check-in:</h1>
+
+            <div class="p4-div1">
+                <h1 class="title18">Room:</h1>
+                <select class="input">
+                    <option value="">Room #201</option>
+                    <option value="">Room #202</option>
+                    <option value="">Room #203</option>
+                </select>
+            </div>
+
+            <div class="p4-div1">
+                <h1 class="title18">Persons:</h1>
+                <input class="input" type="number" placeholder="Enter how many people are in the room">
+            </div>
+
+            <div class="p4-div1">
+                <h1 class="title18">Check-in:</h1>
+                <input class="input" type="date">
+            </div>
+
+            <div class="p4-div1">
+                <h1 class="title18">Check-out:</h1>
+                <input class="input" type="date">
+            </div>
+
+            <div class="p4-div1">
+                <h1 class="title18">Comment:</h1>
+                <textarea name="" id="" class="input" placeholder="Enter additional comment here..."></textarea>
+            </div>
+
+            <h1 class="pricetag">400$</h1>
+
+            <button class="button3">Add check-in</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

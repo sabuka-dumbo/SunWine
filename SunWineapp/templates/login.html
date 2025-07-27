@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="part1">
+        <h1 class="title1">Sun Wine Gallery</h1>
+        <h1 class="title2">Login to book now </h1>
+    </div>
+
+    <form class="part2" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <input type="email" name="email" id="" class="input1" placeholder="Enter email here">
+        <input type="password" name="password" id="" class="input1" placeholder="Enter password here">
+        <input type="submit" name="" id="" class="submit1">
+        <a href="{% url 'register' %}" class="already1">don't have an account? Register here</a>
+    </form>
+{% endblock %}

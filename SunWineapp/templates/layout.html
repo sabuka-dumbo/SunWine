@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- font link -->
+        <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Aleo' rel='stylesheet'>
+
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+        <!-- css link -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body onload="window.scrollTo(0, 0)">
+        <div class="navbar2">
+            <img src="{% static 'pics/logo.jpg' %}" alt="" class="navbar-img2">
+            
+            
+            <div class="navbar-burger" id="navbar-burger">
+                <span class="burger-span" id="span1"></span>
+                <span class="burger-span" id="span2"></span>
+                <span class="burger-span" id="span3"></span>
+            </div>
+        </div>
+
+        <nav class="navbar" id="navbar">
+            <img src="{% static 'pics/logo.jpg' %}" alt="" class="navbar-img">
+
+            <div class="navbar-navs">
+                <a href="{% url 'index' %}" class="navbar-nav">Home</a>
+                <a href="{% url 'services' %}" class="navbar-nav">Services</a>
+                <a href="{% url 'gallery' %}" class="navbar-nav">Gallery</a>
+                <button class="navbar-nav navbar-button"><a href="{% url 'booking' %}" style="color: white; text-decoration: none;">Book now</a></button>
+            </div>
+        </nav>
+
+        {% block body %}
+        {% endblock %}
+
+        <div class="contact-div">
+            <div class="map" id="map"></div>
+
+            <div class="contacts">
+                <div class="contact-part1">
+                    <img src="{% static 'pics/logo.jpg' %}" alt="" class="cp-logo">
+                    <h1 class="cp-title1">SunWine Hotel</h1>
+                    <h1 class="cp-title2">Where Comfort Pours Like Wine—and Time Slows Just for You.</h1>
+
+                    <div class="contact-infos">
+                        <h1 class="contact-info">+{{ contacts.phone_number }}</h1>
+                        <h1 class="contact-info">{{ contacts.address }}</h1>
+                        <a href="{{ contacts.whatsapp }}" class="contact-info" style="text-decoration: none;">Whats app link</a>
+                        <h1 class="contact-info">{{ contacts.email }}</h1>
+                    </div>
+
+                    <div class="navigations">
+                        <h1 class="navigation-title">Navigations</h1>
+                        <a class="navigation" href="{% url 'index' %}">Home</a>
+                        <a class="navigation" href="{% url 'services' %}">Services</a>
+                        <a class="navigation" href="{% url 'gallery' %}">Gallery</a>
+                        <a class="navigation" href="{% url 'booking' %}">Booking</a>
+                    </div>
+                </div>
+
+                <h1 class="copyrights">© SunWine Hotel 2025</h1>
+            </div>
+        </div>
+
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+        <script src="{% static 'js/layout.js' %}"></script>
+    </body>
+</html>

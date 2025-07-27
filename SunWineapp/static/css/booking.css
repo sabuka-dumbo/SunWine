@@ -1,0 +1,313 @@
+.part1 {
+    position: relative;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: max-content;
+    margin-top: 150px;
+}
+
+.title1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    font-size: 30px;
+    font-family: "Aleo";
+    font-weight: bold;
+    color: #EFC456;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.part2 {
+    position: relative;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: max-content;
+    margin-top: 30px;
+}
+
+.search {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    padding: 15px 10px;
+    background-color: #E5F9FF;
+}
+
+.search {
+    width: 100%;
+    padding: 15px 10px;
+    background-color: #E5F9FF;
+    box-sizing: border-box;
+}
+
+.search-inside {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    align-items: end;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-group label {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: "Itim";
+    color: #333;
+}
+
+input[type="date"],
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: "Itim";
+    box-sizing: border-box;
+    width: 100%;
+}
+
+button {
+    background: linear-gradient(to right, #E9AE15, #FFD775);
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Itim";
+}
+
+.searched {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+}
+
+.searched-div {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    height: 150px;
+    padding: 10px;
+    background-color: #E5F9FF;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 200px calc(100% - 200px);
+}
+
+.search-image {
+    position: relative;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: calc(100% + 19px);
+    object-fit: cover;
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #E9AE15;
+}
+
+.search-div1 {
+    position: relative;
+    top: 0;
+    left: 20px;
+    width: calc(100% - 20px);
+    height: 100%;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.search-title1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: black;
+}
+
+.search-title2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: gray;
+}
+
+.button1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: max-content;
+    background: linear-gradient(to top, #E9AE15, #FFD775); /* ✅ Added comma */
+    font-size: 20px;
+    font-family: "Itim", cursive;
+    font-weight: bold;
+    color: #670404;
+    padding: 10px 15px;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.pricetag {
+    position: absolute;
+    bottom: 10px;
+    left: 160px;
+    width: max-content;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: black;
+}
+
+@media screen and (max-width: 560px) {
+    .searched-div {
+        grid-template-columns: 100%;
+        grid-row: auto 10px auto;
+        height: max-content;
+    }
+
+    .search-image {
+        grid-column: 1;
+        grid-row: 1;
+        height: 200px;
+    }
+
+    .search-div1 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .button1 {
+        width: 120px;
+    }
+
+    .pricetag {
+        left: 130px;
+    }
+}
+
+/* Tablet view */
+@media (max-width: 1024px) {
+    .search-inside {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+    .search-inside {
+        grid-template-columns: 1fr;
+    }
+
+    .field-group label {
+        font-size: 14px;
+    }
+
+    input[type="date"],
+    select,
+    button {
+        font-size: 15px;
+        padding: 14px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+    .search {
+        padding: 10px 6px;
+    }
+
+    .search-inside {
+        gap: 10px;
+    }
+
+    .field-group label {
+        font-size: 13px;
+    }
+
+    input[type="date"],
+    select,
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+.mapboxgl-popup-close-button {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    top: 5px;
+    right: 5px;
+}
+
+.mapboxgl-popup-close-button {
+    font-family: "Itim", cursive; /* Match your design */
+    width: max-content;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #670404; /* Green */
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-size: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.alert.show {
+    opacity: 1;
+}
+.alert.hidden {
+    display: none;
+}

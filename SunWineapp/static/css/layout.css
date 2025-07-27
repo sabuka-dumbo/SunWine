@@ -1,0 +1,385 @@
+body {
+    background-color: #0B0B0B;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100px;
+    z-index: 1000;
+    background-color: black;
+}
+
+.navbar-img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+.navbar-navs {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: max-content;
+    height: max-content;
+}
+
+.navbar-nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    font-size: 25px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.navbar-button {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: max-content;
+    background-color: black;
+    border: solid 5px #CBA441;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar2 {
+    display: none;
+}
+
+.contact-div {
+    position: relative;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    height: max-content;
+    margin-top: 100px;
+}
+
+.map {
+    position: relative;
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 300px;
+    background-color: aliceblue;
+}
+
+.contacts {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: calc(100% - 100px);
+    height: max-content;
+    background-color: #CBA441;
+    padding: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+    margin-top: 50px;
+}
+
+.cp-logo {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+}
+
+.cp-title1 {
+    position: relative;
+    top: -25px;
+    left: 10px;
+    width: max-content;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.cp-title2 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 380px;
+    font-size: 20px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-infos {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    margin-top: 20px;
+}
+
+.contact-info {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: white;
+}
+
+.navigations {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: max-content;
+    height: max-content;
+}
+
+.navigation-title {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: max-content;
+    height: max-content;
+    font-size: 25px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.navigation {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Itim";
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+
+.copyrights {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-family: "Itim";
+    font-weight: bold;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 620px) {
+    .navbar {
+        position: fixed;
+        top: none;
+        left: -100%;
+        width: 80vw;
+        height: 100vh;
+        background-color: #670404;
+        display: none;
+    }
+
+    .navbar-img {
+        position: absolute;
+        top: 20px;
+        transform: translateY(0);
+        left: 10%;
+        width: max-content;
+        height: max-content;
+        max-height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .navbar-img2 {
+        position: absolute;
+        top: 0;
+        margin-top: 20px;
+        left: 0;
+        margin-left: 20px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .navbar-navs {
+        position: absolute;
+        top: 60%;
+        left: 10%;
+        transform: translateY(-60%);
+        width: 50%;
+        height: max-content;
+    }
+
+    .navbar-nav {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: max-content;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .navbar2 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100px;
+        display: block;
+        background-color: black;
+        z-index: 1000;
+    }
+
+    .burger-span {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 55px;
+        height: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        background-color: #CBA441;
+        display: block;
+    }
+
+    .navbar-burger {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        cursor: pointer;
+        width: max-content;
+        height: max-content;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .cp-title2 {
+        font-size: 18px;
+        max-width: 200px;
+        display: none;
+    }
+
+    .contact-infos {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .navigations {
+        display: none;
+    }
+
+    .cp-title1 {
+        display: none;
+    }
+
+    .cp-logo {
+        width: 60px;
+        left: calc((100% - 60px) / 2);
+    }
+}
+
+@keyframes span1-open {
+    0% {}
+
+    100% {
+        top: 14px;
+        rotate: 45deg;
+    }
+}
+
+@keyframes span2-open {
+    0% {}
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes span3-open {
+    0% {}
+
+    100% {
+        top: -14px;
+        rotate: -45deg;
+    }
+}
+
+@keyframes span1-close {
+    0% {}
+
+    100% {
+        top: 0px;
+        rotate: 0deg;
+    }
+}
+
+@keyframes span2-close {
+    0% {}
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes span3-close {
+    0% {}
+
+    100% {
+        top: 0px;
+        rotate: 0deg;
+    }
+}
+
+@keyframes navbar-open {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes navbar-close {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: -100%;
+    }
+}

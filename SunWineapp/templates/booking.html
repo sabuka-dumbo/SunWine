@@ -1,0 +1,137 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/booking.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div id="custom-alert" class="alert hidden">
+        {{ message }}
+    </div>
+
+    <div class="part1">
+        <h1 class="title1">Sunwine Hotel</h1>
+    </div>
+
+    <div class="part2">
+        <form method="post" action="{% url 'booking' %}" class="search">
+            {% csrf_token %}
+            <div class="search-inside">
+                <div class="field-group">
+                    <label>Check-in</label>
+                    <input type="date" name="check-in" id="check-in" required>
+                </div>
+                <div class="field-group">
+                    <label>Check-out</label>
+                    <input type="date" name="check-out" id="check-out" required>
+                </div>
+                <div class="field-group">
+                    <label>Guests</label>
+                    <select name="guests" required>
+                        <option>1 Adult, 0 Kids</option>
+                        <option>2 Adults, 0 Kids</option>
+                        <option>1 Adult, 1 Kid</option>
+                        <option>2 Adults, 1 Kid</option>
+                        <option>1 Adult, 2 Kids</option>
+                        <option>2 Adults, 2 Kids</option>
+                        <option>3 Adults, 0 Kids</option>
+                        <option>3 Adults, 1 Kid</option>
+                        <option>2 Adults, 3 Kids</option>
+                    </select>
+                </div>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+
+
+        <div class="searched">
+            {% if results != '' %}
+                {% for i in results %}
+                    <div class="searched-div">
+                        <img src="" alt="Room image" class="search-image">
+
+                        <div class="search-div1">
+                            <h1 class="search-title1">{{ i.room_title }}</h1>
+                            <h1 class="search-title2">Beds: {{ i.bed }}</h1>
+                            <h1 class="search-title2">TVs: {{ i.tv }}</h1>
+                            <h1 class="search-title2">Balconies: {{ i.balcony }}</h1>
+                            <h1 class="search-title2">Bathrooms: {{ i.bathroom }}</h1>
+
+                            <a href="{% url 'room' i.pk %}"><button class="button1">Book now</button></a>
+                            <h1 class="pricetag">{{ i.price }}$ a day</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h2>Available Rooms in the Next 7 Days:</h2>
+                {% for i in rooms2 %}
+                    <div class="searched-div">
+                        <img src="" alt="Room image" class="search-image">
+
+                        <div class="search-div1">
+                            <h1 class="search-title1">{{ i.room_title }}</h1>
+                            <h1 class="search-title2">Beds: {{ i.bed }}</h1>
+                            <h1 class="search-title2">TVs: {{ i.tv }}</h1>
+                            <h1 class="search-title2">Balconies: {{ i.balcony }}</h1>
+                            <h1 class="search-title2">Bathrooms: {{ i.bathroom }}</h1>
+
+                            <a href="{% url 'room' i.id %}"><button class="button1">Book now</button></a>
+                            <h1 class="pricetag">{{ i.price }}$ a day</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const alertBox = document.getElementById("custom-alert");
+        const message = alertBox.textContent.trim();
+
+        if (message) {
+            alertBox.classList.remove("hidden");
+            alertBox.classList.add("show");
+
+            setTimeout(() => {
+                alertBox.classList.remove("show");
+                setTimeout(() => alertBox.classList.add("hidden"), 500);
+            }, 2000); // 2 seconds visible
+        }
+    });
+    </script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkIn = document.getElementById("check-in");
+        const checkOut = document.getElementById("check-out");
+
+        const today = new Date();
+        const oneMonthLater = new Date();
+        oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+
+        // Format to yyyy-mm-dd
+        const formatDate = (date) => {
+            return date.toISOString().split('T')[0];
+        };
+
+        checkIn.min = formatDate(today);
+        checkIn.max = formatDate(oneMonthLater);
+        checkOut.min = formatDate(today);
+        checkOut.max = formatDate(oneMonthLater);
+
+        // Ensure check-out is always after check-in
+        checkIn.addEventListener("change", () => {
+            const selectedDate = new Date(checkIn.value);
+            selectedDate.setDate(selectedDate.getDate() + 1);
+            checkOut.min = formatDate(selectedDate);
+        });
+    });
+</script>
+
+{% endblock %}

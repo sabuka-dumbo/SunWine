@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}
+Sunwine Hotel Batumi - Sea View Rooms in Makhinjauri 
 {% endblock %}
 
 {% block head %}
@@ -11,15 +12,15 @@
 {% block body %}
     <div class="part1">
         <h1 class="title1" id="landing1">Discover about</h1>
-        <h1 class="title2" id="landing2">Sun Wine Hotel</h1>
-        <h1 class="title3" id="landing3">Where Comfort Pours Like Wine—and Time Slows Just for You.</h1>
+        <h1 class="title2" id="landing2">{{ info.title1 }}</h1>
+        <h1 class="title3" id="landing3">{{ info.title2 }}</h1>
 
         <img src="{% static 'pics/housenight.jpg' %}" alt="" class="image1" id="landing4">
     </div>
 
     <div class="part2">
-        <h1 class="title4">Welcome to SunWine Hotel</h1>
-        <h1 class="title5">Welcome to our home-style hotel, where comfort pours like wine and every guest feels like family. Tucked away in a peaceful spot, it's the perfect place to relax, enjoy a drink, and feel right at home.</h1>
+        <h1 class="title4">{{ info.title3 }}</h1>
+        <h1 class="title5">{{ info.title4 }}</h1>
         
         <div class="part2-div">
             <img src="{% static 'pics/IMG-20250724-WA0011.jpg' %}" alt="" class="image2" id="div1">
@@ -38,33 +39,32 @@
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                 </svg>
 
-                <h1 class="title8">Fresh, Local, Handcrafted Experiences</h1>
-                <h1 class="title9">Each morning begins with a fresh, homemade breakfast crafted from local ingredients. From your first cup of coffee to your last evening drink, everything is prepared with care — because small details create lasting memories.</h1>
+                <h1 class="title8">{{ info.title5 }}</h1>
+                <h1 class="title9">{{ info.title6 }}</h1>
             </div>
             <div class="part3-div2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house icon1" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                 </svg>
 
-                <h1 class="title8">Fresh, Local, Handcrafted Experiences</h1>
-                <h1 class="title9">Each morning begins with a fresh, homemade breakfast crafted from local ingredients. From your first cup of coffee to your last evening drink, everything is prepared with care — because small details create lasting memories.</h1>
+                <h1 class="title8">{{ info.title7 }}</h1>
+                <h1 class="title9">{{ info.title8 }}</h1>
             </div>
             <div class="part3-div3">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house icon1" viewBox="0 0 16 16">
                     <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
                 </svg>
 
-                <h1 class="title8">Fresh, Local, Handcrafted Experiences</h1>
-                <h1 class="title9">Each morning begins with a fresh, homemade breakfast crafted from local ingredients. From your first cup of coffee to your last evening drink, everything is prepared with care — because small details create lasting memories.</h1>
+                <h1 class="title8">{{ info.title9 }}</h1>
+                <h1 class="title9">{{ info.title10 }}</h1>
             </div>
         </div>
     </div>
 
     <div class="part4">
         <div class="part4-div1">
-            <h1 class="title10">Triple Room with Sea View</h1>
-            <h1 class="title11">Enjoy a cozy and inviting stay in our Triple Room with Sea View — designed for comfort and relaxation. This spacious room features three comfortable beds and opens up to a private balcony with a stunning view of the sea, perfect for enjoying the fresh breeze and peaceful sounds of the coast.
-The room includes warm orange curtains that add a touch of charm, a work desk with two chairs ideal for reading or planning your day, and a small TV for entertainment. You’ll also find two storage cabinets to keep your belongings organized, a wall mirror, and a private bathroom with toilet for your convenience.</h1>
+            <h1 class="title10">{{ info.title11 }}</h1>
+            <h1 class="title11">{{ info.title12 }}</h1>
             <a href="{% url 'booking' %}"><button class="button2">Book now</button></a>
         </div>
         <img src="{% static 'pics/image 4.png' %}" alt="" class="image5">

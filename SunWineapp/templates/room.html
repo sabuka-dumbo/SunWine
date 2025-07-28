@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}
+{{ room.room_title }} | Sunwine Hotel Batumi, Makhinjauri
 {% endblock %}
 
 {% block head %}
@@ -11,6 +12,7 @@
 
 {% block body %}
     <form method="post" action="{% url 'room' room.id %}">
+        {% csrf_token %}
         <div class="part1">
             <h1 class="title1">Sunwine Hotel</h1>
         </div>
@@ -20,15 +22,15 @@
                 <div class="search-inside">
                     <div class="field-group">
                     <label>Check-in</label>
-                    <input type="date" required>
+                    <input type="date" name="check-in" id="check-in" required>
                     </div>
                     <div class="field-group">
                     <label>Check-out</label>
-                    <input type="date" required>
+                    <input type="date" name="check-out" id="check-out" required>
                     </div>
                     <div class="field-group">
                     <label>Guests</label>
-                    <select required>
+                    <select required name="guests">
                         <option>1 Adult, 0 Kids</option>
                         <option>2 Adults, 0 Kids</option>
                         <option>1 Adult, 1 Kid</option>
@@ -46,16 +48,25 @@
         </div>
 
         <div class="part3">
-            <img src="" alt="" class="part3-image">
-
+            {% if room.image1 != '' %}
+                <img src="{{ room.image1.url }}" alt="" class="part3-image">
+            {% else %}
+                <img src="" alt="" class="part3-image">
+            {% endif %}
+                
             <div class="part3-div1">
                 <h1 class="p3-title1">{{ room.room_title }}</h1>
-                <h1 class="p3-title2">description here</h1>
-                <h1 class="p3-title2">description here</h1>
-                <h1 class="p3-title2">description here</h1>
-                <h1 class="p3-title2">description here</h1>
-                <h1 class="p3-title2">description here</h1>
-                <h1 class="p3-title2">description here</h1>
+
+                <h1 class="p3-title2">Persons: {{ room.items }}</h1>
+                <h1 class="p3-title2">Bed: {{ room.bed }}</h1>
+                <h1 class="p3-title2">Storage: {{ room.storage }}</h1>
+                <h1 class="p3-title2">Balcony: {{ room.balcony }}</h1>
+                <h1 class="p3-title2">Items: {{ room.items }}</h1>
+                <h1 class="p3-title2">Bathroom: {{ room.bathroom }}</h1>
+                <h1 class="p3-title2">TV: {{ room.tv }}</h1>
+                <h1 class="p3-title2">Fridge: {{ room.fridge }}</h1>
+                <h1 class="p3-title2">Square perimeter: {{ room.kvadratuloba }}</h1>
+
                     
                 <button class="p3-button">Check in the room</button>
             </div>
@@ -64,9 +75,43 @@
         <h1 class="part3-description">{{ room.description }}</h1>
 
         <div class="part4">
-            <img src="" alt="" class="p4-image1">
-            <img src="" alt="" class="p4-image2">
-            <img src="" alt="" class="p4-image3">
+            {% if room.image1 != '' %}
+                <img src="{{ room.image2.url }}" alt="" class="p4-image1">
+                <img src="{{ room.image3.url }}" alt="" class="p4-image2">
+                <img src="{{ room.image4.url }}" alt="" class="p4-image3">
+            {% else %}
+                <img src="" alt="" class="p4-image1">
+                <img src="" alt="" class="p4-image2">
+                <img src="" alt="" class="p4-image3">
+            {% endif %}
         </div>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        const checkIn = document.getElementById("check-in");
+        const checkOut = document.getElementById("check-out");
+
+        const today = new Date();
+        const oneMonthLater = new Date();
+        oneMonthLater.setMonth(oneMonthLater.getMonth() + 1);
+
+        // Format to yyyy-mm-dd
+        const formatDate = (date) => {
+            return date.toISOString().split('T')[0];
+        };
+
+        checkIn.min = formatDate(today);
+        checkIn.max = formatDate(oneMonthLater);
+        checkOut.min = formatDate(today);
+        checkOut.max = formatDate(oneMonthLater);
+
+        // Ensure check-out is always after check-in
+        checkIn.addEventListener("change", () => {
+            const selectedDate = new Date(checkIn.value);
+            selectedDate.setDate(selectedDate.getDate() + 1);
+            checkOut.min = formatDate(selectedDate);
+        });
+    });
+    </script>
 {% endblock %}

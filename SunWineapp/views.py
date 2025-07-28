@@ -2,16 +2,18 @@ from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth import login, authenticate
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from datetime import datetime, timedelta
 import re
-
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def index(request):
     print(Contact.objects.first().email)
     return render(request, "index.html", {
+        "info": Indexpage.objects.all().get(id=1),
         "contacts": Contact.objects.first()
     })
 
@@ -25,7 +27,8 @@ def services(request):
 
 def gallery(request):
     return render(request, "gallery.html", {
-        "contacts": Contact.objects.first()
+        "contacts": Contact.objects.first(),
+        "gallery": Gallery.objects.all().get(id=1)
     })
 
 def login_view(request):
@@ -139,16 +142,82 @@ def booking(request):
         "rooms2": available_next_7_days
     })
 
+@login_required
 def dashboard(request):
     return render(request, "dashboard.html", {
-        "contacts": Contact.objects.first()
+        "contacts": Contact.objects.first(),
+        "room_count": Rooms.objects.all()
     })
 
-def room(request, roomid):
+def redirect_to_index(request, exception=None):
+    return redirect('index')
+
+handler404 = redirect_to_index
+
+@login_required
+def dashboard1(request):
     if request.method == "POST":
-        return redirect('index')
+        room_id = request.POST.get("room")
+        persons = request.POST.get("persons")
+        check_in_str = request.POST.get("check-in")
+        check_out_str = request.POST.get("check-out")
+        comment = request.POST.get("comment", "")
+
+        # Get room instance
+        room = Rooms.objects.get(id=room_id)
+
+        # Create check-in
+        Check_In.objects.create(
+            user=request.user,
+            room=room,
+            persons=persons,
+            check_in=check_in_str,
+            check_out=check_out_str,
+            comment=comment,
+        )
+
+        return redirect("dashboard")
+
+    rooms = Rooms.objects.all()
+    return render(request, "your_template.html", {"room_count": rooms})
+
+def room(request, roomid):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            check_in_str = request.POST.get('check-in')
+            check_out_str = request.POST.get('check-out')
+            guests = request.POST.get('guests')
+
+            try:
+                check_in_date = datetime.strptime(check_in_str, '%Y-%m-%d').date()
+                check_out_date = datetime.strptime(check_out_str, '%Y-%m-%d').date()
+            except ValueError:
+                return render(request, "room.html", {
+                    "contacts": Contact.objects.first(),
+                    "room": Rooms.objects.get(pk=roomid),
+                    "error": "Invalid date format."
+                })
+
+            room = Rooms.objects.get(pk=roomid)
+            user = request.user
+
+            Check_In.objects.create(
+                user=request.user,
+                room=room,
+                persons=guests,
+                check_in=check_in_date,
+                check_out=check_out_date
+            )
+
+            return redirect('bought')
+        else:
+            return render(request, "room.html", {
+                "contacts": Contact.objects.first(),
+                "room": Rooms.objects.get(pk=roomid),
+            })
     else:
-        return render(request, "room.html", {
-            "contacts": Contact.objects.first(),
-            "room": Rooms.objects.all().get(pk=roomid),
-        })
+        return redirect('register') 
+
+@login_required
+def bought(request):
+    return render(request, "bought.html")

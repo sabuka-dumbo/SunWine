@@ -4,6 +4,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="SunWine Hotel | Luxury Stay in Batumi, Makhinjauri & Awara">
+        <meta property="og:description" content="Discover SunWine Hotel, offering sea view rooms and top-rated comfort in Makhinjauri near Batumi and Awara. Reserve your stay today.">
+        <meta property="og:image" content=""> <!-- url of website and then image -->
+        <meta property="og:url" content=""><!-- url of website -->
+        <meta name="description" content="Book your stay at Sun Wine Hotel in Batumi. Enjoy modern rooms, free Wi-Fi, sea views, and top-rated hospitality. Reserve your room online today.">
         <title>{% block title %}{% endblock %}</title>
 
         <!-- font link -->
@@ -14,10 +19,33 @@
 
         <!-- css link -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+
+<!--        <script type="application/ld+json">
+            {
+            "@context": "https://schema.org",
+            "@type": "Hotel",
+            "name": "SunWine Hotel",
+            "description": "A sea view hotel located in Makhinjauri near Batumi and Awara. Perfect for relaxing Black Sea vacations with modern rooms and friendly service.",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "22a Akhalgazrdoba Street",
+                "addressLocality": "Makhinjauri",
+                "addressRegion": "Adjara",
+                "addressCountry": "Georgia"
+            },
+            "telephone": "+995-555-123456",
+            "image": "https://yourwebsite.com/images/hotel.jpg",
+            "url": "https://yourwebsite.com"
+            }
+        </script>-->
         {% block head %}
         {% endblock %}
     </head>
     <body onload="window.scrollTo(0, 0)">
+        <div id="loading-screen">
+            <div class="loader"></div>
+        </div>
+
         <div class="navbar2">
             <img src="{% static 'pics/logo.jpg' %}" alt="" class="navbar-img2">
             
@@ -72,6 +100,21 @@
             </div>
         </div>
 
+        <script>
+            // Show loader for 1.5s, then fade out
+            window.addEventListener("DOMContentLoaded", () => {
+                setTimeout(() => {
+                document.getElementById("loading-screen").classList.add("fade-out");
+                document.querySelector(".content").classList.add("show");
+
+                // remove from DOM after fade
+                setTimeout(() => {
+                    document.getElementById("loading-screen").style.display = "none";
+                    document.body.style.overflow = "auto"; // re-enable scrolling
+                }, 500);
+                }, 800); // loader time
+            });
+        </script>
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
         <script src="{% static 'js/layout.js' %}"></script>
     </body>

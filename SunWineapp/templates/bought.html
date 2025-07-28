@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bought.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="bought-div">
+        <h1 class="bought-title1">Thank you, we took your order!</h1>
+        <h1 class="bought-title2">You will recieve phone call for futher details and payment methods.</h1>
+    </div>
+
+    <script src="{% static 'js/bought.js' %}"></script>
+{% endblock %}

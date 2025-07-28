@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}
+Book Your Stay at Sunwine Hotel Batumi - Makhinjauri / Awara
 {% endblock %}
 
 {% block head %}
@@ -14,7 +15,7 @@
     </div>
 
     <div class="part1">
-        <h1 class="title1">Sunwine Hotel</h1>
+        <h1 class="title1">Book now</h1>
     </div>
 
     <div class="part2">
@@ -62,7 +63,7 @@
                             <h1 class="search-title2">Bathrooms: {{ i.bathroom }}</h1>
 
                             <a href="{% url 'room' i.pk %}"><button class="button1">Book now</button></a>
-                            <h1 class="pricetag">{{ i.price }}$ a day</h1>
+                            <h1 class="pricetag">{{ i.price }}₾ a day</h1>
                         </div>
                     </div>
                 {% endfor %}
@@ -80,7 +81,7 @@
                             <h1 class="search-title2">Bathrooms: {{ i.bathroom }}</h1>
 
                             <a href="{% url 'room' i.id %}"><button class="button1">Book now</button></a>
-                            <h1 class="pricetag">{{ i.price }}$ a day</h1>
+                            <h1 class="pricetag">{{ i.price }}₾ a day</h1>
                         </div>
                     </div>
                 {% endfor %}

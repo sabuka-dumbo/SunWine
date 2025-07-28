@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}
+Sunwine Hotel Gallery - Photos of Our Batumi Hotel
 {% endblock %}
 
 {% block head %}
@@ -15,15 +16,15 @@
     </div>
 
     <div class="part2">
-        <img src="" alt="" class="image1">
-        <img src="" alt="" class="image2">
-        <img src="" alt="" class="image3">
-        <img src="" alt="" class="image4">
+        <img src="{{ gallery.image1.url }}" alt="" class="image1">
+        <img src="{{ gallery.image2.url }}" alt="" class="image2">
+        <img src="{{ gallery.image3.url }}" alt="" class="image3">
+        <img src="{{ gallery.image4.url }}" alt="" class="image4">
         <div class="part2-div1">
-            <img src="" alt="" class="image5">
-            <img src="" alt="" class="image6">
-            <img src="" alt="" class="image7">
+            <img src="{{ gallery.image5.url }}" alt="" class="image5">
+            <img src="{{ gallery.image6.url }}" alt="" class="image6">
+            <img src="{{ gallery.image7.url }}" alt="" class="image7">
         </div>
-        <img src="" alt="" class="image8">
+        <img src="{{ gallery.image8.url }}" alt="" class="image8">
     </div>
 {% endblock %}

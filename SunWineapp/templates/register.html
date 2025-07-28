@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}
+Create Account - Sunwine Hotel Batumi
 {% endblock %}
 
 {% block head %}
@@ -16,10 +17,10 @@
 
     <form class="part2" action="{% url 'register' %}" method="POST">
         {% csrf_token %}
-        <input type="email" name="email" id="" class="input1" placeholder="Enter email here">
-        <input type="text" name="full_name" id="" class="input1" placeholder="Enter full name here">
-        <input type="number" name="phone_number" id="" class="input1" placeholder="Enter phone number here">
-        <input type="password" name="password" id="" class="input1" placeholder="Enter password here">
+        <input type="email" name="email" id="" class="input1" placeholder="Enter email here" required>
+        <input type="text" name="full_name" id="" class="input1" placeholder="Enter full name here" required>
+        <input type="number" name="phone_number" id="" class="input1" placeholder="Enter phone number here" required>
+        <input type="password" name="password" id="" class="input1" placeholder="Enter password here" required>
         <input type="submit" name="" id="" class="submit1">
         <a href="{% url 'login' %}" class="already1">already have an acoount? Login here</a>
     </form>

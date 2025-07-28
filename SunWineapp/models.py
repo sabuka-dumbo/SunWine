@@ -8,7 +8,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=150, default="")
 
     def __str__(self):
-        return f"{self.full_name}"
+        return f"მომხმარებელი: {self.full_name}"
 
 class Rooms(models.Model):
     room_number = models.IntegerField(default=1)
@@ -34,18 +34,19 @@ class Rooms(models.Model):
 
 
     def __str__(self):
-        return f"{self.room_number}"
+        return f"ოთახის ნომერი: {self.room_number}"
     
 class Check_In(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user', default='')
     room = models.ForeignKey(Rooms, on_delete=models.CASCADE, related_name='room', default='')
-    persons = models.PositiveIntegerField(default=1)
+    persons = models.CharField(default='', max_length=150)
     reserved = models.BooleanField(default=True)
     check_in = models.DateField(default=datetime.date.today)
     check_out = models.DateField(default=datetime.date.today)
+    comment = models.CharField(default='', max_length=1000)
 
     def __str__(self):
-        return f"Room"
+        return f"ჩექ-ინი ოთახ {self.room.room_number}, {self.check_in}-დან {self.check_out}-მდე."
 
     
 class Services(models.Model):
@@ -54,7 +55,7 @@ class Services(models.Model):
     service_image = models.ImageField(upload_to='pics/')
 
     def __str__(self):
-        return f"{self.service_title}"
+        return f"სერვისი: {self.service_title}"
     
 class Contact(models.Model):
     phone_number = models.IntegerField()
@@ -63,4 +64,39 @@ class Contact(models.Model):
     address = models.CharField(max_length=1000)
 
     def __str__(self):
-        return f"Contacts {self.pk}"
+        return f"საკონტაქტო {self.pk}"
+
+class Gallery(models.Model):
+    image1 = models.ImageField(upload_to='pics/')
+    image2 = models.ImageField(upload_to='pics/')
+    image3 = models.ImageField(upload_to='pics/')
+    image4 = models.ImageField(upload_to='pics/')
+    image5 = models.ImageField(upload_to='pics/')
+    image6 = models.ImageField(upload_to='pics/')
+    image7 = models.ImageField(upload_to='pics/')
+    image8 = models.ImageField(upload_to='pics/')
+
+    def __str__(self):
+        return f"გალერეა {self.pk}"
+
+class Indexpage(models.Model):
+    title1 = models.CharField(max_length=1500, default='')
+    title2 = models.CharField(max_length=1500, default='')
+    title3 = models.CharField(max_length=1500, default='')
+    title4 = models.CharField(max_length=1500, default='')
+    title5 = models.CharField(max_length=1500, default='')
+    title6 = models.CharField(max_length=1500, default='')
+    title7= models.CharField(max_length=1500, default='')
+    title8 = models.CharField(max_length=1500, default='')
+    title9 = models.CharField(max_length=1500, default='')
+    title10 = models.CharField(max_length=1500, default='')
+    title11 = models.CharField(max_length=1500, default='')
+    title12 = models.CharField(max_length=1500, default='')
+    image1 = models.ImageField(default='')
+    image2 = models.ImageField(default='')
+    image3 = models.ImageField(default='')
+    image4 = models.ImageField(default='')
+    image5 = models.ImageField(default='')
+
+    def __str__(self):
+        return f"ინფორმაციის გვერდის ინფორმაცია"

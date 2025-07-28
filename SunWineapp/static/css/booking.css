@@ -205,12 +205,14 @@ button {
         grid-column: 1;
         grid-row: 1;
         height: 200px;
+        width: calc(100% + 20px);
     }
 
     .search-div1 {
         grid-column: 1;
         grid-row: 3;
     }
+
 }
 
 @media screen and (max-width: 350px) {

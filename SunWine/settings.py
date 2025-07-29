@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e7u4csdn(6s+9sotrc65nwdxw@_8b6b^va+)*6fv1t##1)koud'
+SECRET_KEY = '4!0(umvtc4rxq^k0^!7th-r1$-n8sr$osjhh__$%pqp6%xmqxc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com', 'sunwinehotel.com', 'www.sunwinehotel.com']
 
 
 # Application definition
@@ -104,13 +104,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'ka'
+TIME_ZONE = 'Asia/Tbilisi'
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
+
 
 
 # Static files (CSS, JavaScript, Images)

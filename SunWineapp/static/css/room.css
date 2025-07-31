@@ -17,6 +17,7 @@
     height: 400px;
     grid-column: 1;
     grid-row: 1;
+    object-fit: contain;
 }
 
 .part3-div1 {
@@ -100,6 +101,7 @@
     height: 100%;
     grid-column: 1;
     grid-row: 1;
+    object-fit: contain;
 }
 
 .p4-image2 {
@@ -110,6 +112,7 @@
     height: 100%;
     grid-column: 3;
     grid-row: 1;
+    object-fit: contain;
 }
 
 .p4-image3 {
@@ -120,6 +123,7 @@
     height: 100%;
     grid-column: 5;
     grid-row: 1;
+    object-fit: contain;
 }
 
 @media screen and (max-width: 920px) {

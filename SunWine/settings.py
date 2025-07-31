@@ -25,7 +25,13 @@ SECRET_KEY = '4!0(umvtc4rxq^k0^!7th-r1$-n8sr$osjhh__$%pqp6%xmqxc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'sunwinehotel.com', 'www.sunwinehotel.com']
+ALLOWED_HOSTS = [
+    '.herokuapp.com',
+    'sunwinehotel.com',
+    'www.sunwinehotel.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 
 # Application definition

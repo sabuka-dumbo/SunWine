@@ -2,45 +2,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="SunWine Hotel | Luxury Stay in Batumi, Makhinjauri & Awara">
-    <meta property="og:description" content="Discover SunWine Hotel, offering sea view rooms and top-rated comfort in Makhinjauri near Batumi and Awara. Reserve your stay today.">
-    <meta property="og:image" content="{% static 'pics/og-image.jpg' %}">
-    <meta property="og:url" content="https://sunwinehotel.com/">
-    <meta name="description" content="Book your stay at Sun Wine Hotel in Batumi. Enjoy modern rooms, free Wi-Fi, sea views, and top-rated hospitality. Reserve your room online today.">
-    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    {# Dynamic title with fallback #}
+    <title>{% block title %}Luxury Sea View Hotel in Batumi | SunWine Hotel{% endblock %}</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Aleo" rel="stylesheet">
+    {# Dynamic meta description with fallback #}
+    <meta name="description" content="{% block meta_description %}Book your stay at Sun Wine Hotel in Batumi. Enjoy modern rooms, free Wi-Fi, sea views, and top-rated hospitality. Reserve your room online today.{% endblock %}" />
+    <meta name="keywords" content="Batumi hotel, luxury hotel, sea view rooms, SunWine Hotel, Georgia hotel" />
+    <meta name="robots" content="index, follow" />
 
-    <!-- Mapbox CSS -->
+    {# Canonical URL - dynamically set based on request #}
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
+    {# Open Graph Meta Tags for social sharing #}
+    <meta property="og:title" content="{% block og_title %}SunWine Hotel | Luxury Stay in Batumi{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}Discover SunWine Hotel, offering sea view rooms and top-rated comfort in Makhinjauri near Batumi and Awara. Reserve your stay today.{% endblock %}" />
+    <meta property="og:image" content="{% static 'pics/og-image.jpg' %}" />
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+    <meta property="og:type" content="website" />
+
+    {# Twitter Card Meta Tags #}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{% block twitter_title %}SunWine Hotel | Luxury Stay in Batumi{% endblock %}" />
+    <meta name="twitter:description" content="{% block twitter_description %}Book your stay at Sun Wine Hotel in Batumi. Enjoy sea views and top hospitality.{% endblock %}" />
+    <meta name="twitter:image" content="{% static 'pics/og-image.jpg' %}" />
+
+    {# Fonts #}
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Aleo" rel="stylesheet" />
+
+    {# Mapbox CSS #}
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
 
-    <!-- CSS -->
+    {# Main CSS #}
     <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
-    
+
+    {# Structured Data JSON-LD for Hotel #}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "SunWine Hotel",
+      "image": "https://sunwinehotel.com{% static 'pics/logo.jpg' %}",
+      "telephone": "+995558555596",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Makhinjauri's 22a",
+        "addressLocality": "Makhinjauri",
+        "addressRegion": "Adjara",
+        "addressCountry": "GE"
+      },
+      "url": "https://sunwinehotel.com/"
+    }
+    </script>
+
     {% block head %}{% endblock %}
 </head>
 <body onload="window.scrollTo(0, 0)">
     <div id="loading-screen">
-        <div class="loader"></div>
+        <div class="loader" role="status" aria-label="Loading"></div>
     </div>
 
     <!-- Top Navbar -->
-    <div class="navbar2">
-        <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="navbar-img2">
-        <div class="navbar-burger" id="navbar-burger">
+    <header class="navbar2" role="banner">
+        <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="navbar-img2" />
+        <button class="navbar-burger" id="navbar-burger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar">
             <span class="burger-span" id="span1"></span>
             <span class="burger-span" id="span2"></span>
             <span class="burger-span" id="span3"></span>
-        </div>
-    </div>
+        </button>
+    </header>
 
     <!-- Main Navbar -->
-    <nav class="navbar" id="navbar">
-        <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="navbar-img">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main menu">
+        <a href="{% url 'index' %}" class="navbar-img-link" aria-label="SunWine Hotel Home">
+            <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="navbar-img" />
+        </a>
         <div class="navbar-navs">
             <a href="{% url 'index' %}" class="navbar-nav">Home</a>
             <a href="{% url 'services' %}" class="navbar-nav">Services</a>
@@ -50,44 +89,44 @@
     </nav>
 
     <!-- Page Content -->
-    <main>
+    <main role="main">
         {% block body %}
         {% endblock %}
     </main>
 
     <!-- Contact Section -->
-    <div class="contact-div">
-        <div class="map" id="map"></div>
+    <footer class="contact-div" role="contentinfo">
+        <div class="map" id="map" aria-label="Hotel location map"></div>
 
         <div class="contacts">
-            <div class="contact-part1">
-                <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="cp-logo">
-                <h1 class="cp-title1">SunWine Hotel</h1>
-                <h1 class="cp-title2">Where Comfort Pours Like Wine—and Time Slows Just for You.</h1>
+            <section class="contact-part1" aria-labelledby="contact-info-title">
+                <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="cp-logo" />
+                <h1 id="contact-info-title" class="cp-title1">SunWine Hotel</h1>
+                <h2 class="cp-title2">Where Comfort Pours Like Wine—and Time Slows Just for You.</h2>
 
                 <div class="contact-infos">
-                    <h1 class="contact-info">+{{ contacts.phone_number|default:"995-000-000000" }}</h1>
-                    <h1 class="contact-info">{{ contacts.address|default:"Batumi, Georgia" }}</h1>
+                    <p class="contact-info" aria-label="Phone number">+{{ contacts.phone_number|default:"995-000-000000" }}</p>
+                    <p class="contact-info" aria-label="Address">{{ contacts.address|default:"Batumi, Georgia" }}</p>
                     {% if contacts.whatsapp %}
-                        <a href="{{ contacts.whatsapp }}" class="contact-info" style="text-decoration: none;">WhatsApp</a>
+                        <a href="{{ contacts.whatsapp }}" class="contact-info" style="text-decoration: none;" aria-label="WhatsApp contact">WhatsApp</a>
                     {% else %}
                         <span class="contact-info">WhatsApp not available</span>
                     {% endif %}
-                    <h1 class="contact-info">{{ contacts.email|default:"info@sunwinehotel.com" }}</h1>
+                    <p class="contact-info" aria-label="Email">{{ contacts.email|default:"info@sunwinehotel.com" }}</p>
                 </div>
 
-                <div class="navigations">
-                    <h1 class="navigation-title">Navigations</h1>
+                <nav class="navigations" aria-label="Footer navigation">
+                    <h3 class="navigation-title">Navigations</h3>
                     <a class="navigation" href="{% url 'index' %}">Home</a>
                     <a class="navigation" href="{% url 'services' %}">Services</a>
                     <a class="navigation" href="{% url 'gallery' %}">Gallery</a>
                     <a class="navigation" href="{% url 'booking' %}">Booking</a>
-                </div>
-            </div>
+                </nav>
+            </section>
 
-            <h1 class="copyrights">© SunWine Hotel 2025</h1>
+            <p class="copyrights">© SunWine Hotel 2025</p>
         </div>
-    </div>
+    </footer>
 
     <!-- JS Loader -->
     <script>
@@ -97,7 +136,6 @@
                 const content = document.querySelector(".content");
                 if (content) content.classList.add("show");
 
-                // remove loader from DOM after fade
                 setTimeout(() => {
                     document.getElementById("loading-screen").style.display = "none";
                     document.body.style.overflow = "auto";
@@ -107,7 +145,7 @@
     </script>
 
     <!-- Mapbox and Layout JS -->
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="{% static 'js/layout.js' %}"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js" defer></script>
+    <script src="{% static 'js/layout.js' %}" defer></script>
 </body>
 </html>

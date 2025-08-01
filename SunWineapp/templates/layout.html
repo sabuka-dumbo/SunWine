@@ -1,121 +1,113 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta property="og:title" content="SunWine Hotel | Luxury Stay in Batumi, Makhinjauri & Awara">
-        <meta property="og:description" content="Discover SunWine Hotel, offering sea view rooms and top-rated comfort in Makhinjauri near Batumi and Awara. Reserve your stay today.">
-        <meta property="og:image" content=""> <!-- url of website and then image -->
-        <meta property="og:url" content=""><!-- url of website -->
-        <meta name="description" content="Book your stay at Sun Wine Hotel in Batumi. Enjoy modern rooms, free Wi-Fi, sea views, and top-rated hospitality. Reserve your room online today.">
-        <title>{% block title %}{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="SunWine Hotel | Luxury Stay in Batumi, Makhinjauri & Awara">
+    <meta property="og:description" content="Discover SunWine Hotel, offering sea view rooms and top-rated comfort in Makhinjauri near Batumi and Awara. Reserve your stay today.">
+    <meta property="og:image" content="{% static 'pics/og-image.jpg' %}">
+    <meta property="og:url" content="https://sunwinehotel.com/">
+    <meta name="description" content="Book your stay at Sun Wine Hotel in Batumi. Enjoy modern rooms, free Wi-Fi, sea views, and top-rated hospitality. Reserve your room online today.">
+    <title>{% block title %}{% endblock %}</title>
 
-        <!-- font link -->
-        <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Aleo' rel='stylesheet'>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Aleo" rel="stylesheet">
 
-        <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
 
-        <!-- css link -->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/layout.css' %}" />
+    
+    {% block head %}{% endblock %}
+</head>
+<body onload="window.scrollTo(0, 0)">
+    <div id="loading-screen">
+        <div class="loader"></div>
+    </div>
 
-<!--        <script type="application/ld+json">
-            {
-            "@context": "https://schema.org",
-            "@type": "Hotel",
-            "name": "SunWine Hotel",
-            "description": "A sea view hotel located in Makhinjauri near Batumi and Awara. Perfect for relaxing Black Sea vacations with modern rooms and friendly service.",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "22a Akhalgazrdoba Street",
-                "addressLocality": "Makhinjauri",
-                "addressRegion": "Adjara",
-                "addressCountry": "Georgia"
-            },
-            "telephone": "+995-555-123456",
-            "image": "https://yourwebsite.com/images/hotel.jpg",
-            "url": "https://yourwebsite.com"
-            }
-        </script>-->
-        {% block head %}
-        {% endblock %}
-    </head>
-    <body onload="window.scrollTo(0, 0)">
-        <div id="loading-screen">
-            <div class="loader"></div>
+    <!-- Top Navbar -->
+    <div class="navbar2">
+        <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="navbar-img2">
+        <div class="navbar-burger" id="navbar-burger">
+            <span class="burger-span" id="span1"></span>
+            <span class="burger-span" id="span2"></span>
+            <span class="burger-span" id="span3"></span>
         </div>
+    </div>
 
-        <div class="navbar2">
-            <img src="{% static 'pics/logo.jpg' %}" alt="" class="navbar-img2">
-            
-            
-            <div class="navbar-burger" id="navbar-burger">
-                <span class="burger-span" id="span1"></span>
-                <span class="burger-span" id="span2"></span>
-                <span class="burger-span" id="span3"></span>
-            </div>
+    <!-- Main Navbar -->
+    <nav class="navbar" id="navbar">
+        <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="navbar-img">
+        <div class="navbar-navs">
+            <a href="{% url 'index' %}" class="navbar-nav">Home</a>
+            <a href="{% url 'services' %}" class="navbar-nav">Services</a>
+            <a href="{% url 'gallery' %}" class="navbar-nav">Gallery</a>
+            <a href="{% url 'booking' %}" class="navbar-nav navbar-button" style="color: white; text-decoration: none;">Book now</a>
         </div>
+    </nav>
 
-        <nav class="navbar" id="navbar">
-            <img src="{% static 'pics/logo.jpg' %}" alt="" class="navbar-img">
-
-            <div class="navbar-navs">
-                <a href="{% url 'index' %}" class="navbar-nav">Home</a>
-                <a href="{% url 'services' %}" class="navbar-nav">Services</a>
-                <a href="{% url 'gallery' %}" class="navbar-nav">Gallery</a>
-                <button class="navbar-nav navbar-button"><a href="{% url 'booking' %}" style="color: white; text-decoration: none;">Book now</a></button>
-            </div>
-        </nav>
-
+    <!-- Page Content -->
+    <main>
         {% block body %}
         {% endblock %}
+    </main>
 
-        <div class="contact-div">
-            <div class="map" id="map"></div>
+    <!-- Contact Section -->
+    <div class="contact-div">
+        <div class="map" id="map"></div>
 
-            <div class="contacts">
-                <div class="contact-part1">
-                    <img src="{% static 'pics/logo.jpg' %}" alt="" class="cp-logo">
-                    <h1 class="cp-title1">SunWine Hotel</h1>
-                    <h1 class="cp-title2">Where Comfort Pours Like Wine—and Time Slows Just for You.</h1>
+        <div class="contacts">
+            <div class="contact-part1">
+                <img src="{% static 'pics/logo.jpg' %}" alt="SunWine Hotel Logo" class="cp-logo">
+                <h1 class="cp-title1">SunWine Hotel</h1>
+                <h1 class="cp-title2">Where Comfort Pours Like Wine—and Time Slows Just for You.</h1>
 
-                    <div class="contact-infos">
-                        <h1 class="contact-info">+{{ contacts.phone_number }}</h1>
-                        <h1 class="contact-info">{{ contacts.address }}</h1>
-                        <a href="{{ contacts.whatsapp }}" class="contact-info" style="text-decoration: none;">Whats app link</a>
-                        <h1 class="contact-info">{{ contacts.email }}</h1>
-                    </div>
-
-                    <div class="navigations">
-                        <h1 class="navigation-title">Navigations</h1>
-                        <a class="navigation" href="{% url 'index' %}">Home</a>
-                        <a class="navigation" href="{% url 'services' %}">Services</a>
-                        <a class="navigation" href="{% url 'gallery' %}">Gallery</a>
-                        <a class="navigation" href="{% url 'booking' %}">Booking</a>
-                    </div>
+                <div class="contact-infos">
+                    <h1 class="contact-info">+{{ contacts.phone_number|default:"995-000-000000" }}</h1>
+                    <h1 class="contact-info">{{ contacts.address|default:"Batumi, Georgia" }}</h1>
+                    {% if contacts.whatsapp %}
+                        <a href="{{ contacts.whatsapp }}" class="contact-info" style="text-decoration: none;">WhatsApp</a>
+                    {% else %}
+                        <span class="contact-info">WhatsApp not available</span>
+                    {% endif %}
+                    <h1 class="contact-info">{{ contacts.email|default:"info@sunwinehotel.com" }}</h1>
                 </div>
 
-                <h1 class="copyrights">© SunWine Hotel 2025</h1>
+                <div class="navigations">
+                    <h1 class="navigation-title">Navigations</h1>
+                    <a class="navigation" href="{% url 'index' %}">Home</a>
+                    <a class="navigation" href="{% url 'services' %}">Services</a>
+                    <a class="navigation" href="{% url 'gallery' %}">Gallery</a>
+                    <a class="navigation" href="{% url 'booking' %}">Booking</a>
+                </div>
             </div>
+
+            <h1 class="copyrights">© SunWine Hotel 2025</h1>
         </div>
+    </div>
 
-        <script>
-            // Show loader for 1.5s, then fade out
-            window.addEventListener("DOMContentLoaded", () => {
-                setTimeout(() => {
+    <!-- JS Loader -->
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
                 document.getElementById("loading-screen").classList.add("fade-out");
-                document.querySelector(".content").classList.add("show");
+                const content = document.querySelector(".content");
+                if (content) content.classList.add("show");
 
-                // remove from DOM after fade
+                // remove loader from DOM after fade
                 setTimeout(() => {
                     document.getElementById("loading-screen").style.display = "none";
-                    document.body.style.overflow = "auto"; // re-enable scrolling
+                    document.body.style.overflow = "auto";
                 }, 500);
-                }, 800); // loader time
-            });
-        </script>
-        <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-        <script src="{% static 'js/layout.js' %}"></script>
-    </body>
+            }, 800);
+        });
+    </script>
+
+    <!-- Mapbox and Layout JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <script src="{% static 'js/layout.js' %}"></script>
+</body>
 </html>

@@ -19,9 +19,167 @@ Create Account - Sunwine Hotel Batumi
         {% csrf_token %}
         <input type="email" name="email" id="" class="input1" placeholder="Enter email here" required>
         <input type="text" name="full_name" id="" class="input1" placeholder="Enter full name here" required>
-        <input type="number" name="phone_number" id="" class="input1" placeholder="Enter phone number here" required>
+        <select name="country" id="country-select" class="input1" style="width: 100%;" required>
+            <option value="">Select a country...</option>
+            
+            <!-- Most common in Georgia -->
+            <option value="GE" data-num="268" data-length="9">🇬🇪 Georgia (+995)</option>
+            <option value="RU" data-num="643" data-length="10">🇷🇺 Russia (+7)</option>
+            <option value="TR" data-num="792" data-length="10">🇹🇷 Turkey (+90)</option>
+            <option value="AM" data-num="051" data-length="8">🇦🇲 Armenia (+374)</option>
+            <option value="AZ" data-num="031" data-length="9">🇦🇿 Azerbaijan (+994)</option>
+            <option value="UA" data-num="804" data-length="9">🇺🇦 Ukraine (+380)</option>
+            
+            <!-- Common tourist sources -->
+            <option value="IL" data-num="376" data-length="9">🇮🇱 Israel (+972)</option>
+            <option value="IR" data-num="364" data-length="10">🇮🇷 Iran (+98)</option>
+            <option value="KZ" data-num="398" data-length="10">🇰🇿 Kazakhstan (+7)</option>
+            
+            <!-- EU and Western countries -->
+            <option value="DE" data-num="276" data-length="10">🇩🇪 Germany (+49)</option>
+            <option value="FR" data-num="250" data-length="9">🇫🇷 France (+33)</option>
+            <option value="IT" data-num="380" data-length="10">🇮🇹 Italy (+39)</option>
+            <option value="ES" data-num="724" data-length="9">🇪🇸 Spain (+34)</option>
+            <option value="PL" data-num="616" data-length="9">🇵🇱 Poland (+48)</option>
+            <option value="GB" data-num="826" data-length="10">🇬🇧 United Kingdom (+44)</option>
+            <option value="US" data-num="840" data-length="10">🇺🇸 United States (+1)</option>
+            
+            <!-- Other notable countries -->
+            <option value="BY" data-num="112" data-length="9">🇧🇾 Belarus (+375)</option>
+            <option value="UZ" data-num="860" data-length="9">🇺🇿 Uzbekistan (+998)</option>
+            <option value="AE" data-num="784" data-length="9">🇦🇪 United Arab Emirates (+971)</option>
+            <option value="IN" data-num="356" data-length="10">🇮🇳 India (+91)</option>
+            <option value="CN" data-num="156" data-length="11">🇨🇳 China (+86)</option>
+            
+            <!-- Other options -->
+            <option disabled>──────────</option>
+            <option value="OTHER" data-num="000" data-length="10">Other country</option>
+        </select>
+        <div class="phone-input-container">
+            <input type="text" id="country-code" class="country-code" readonly>
+            <input type="tel" name="phone_number" id="phone-number" class="input1 phone-number" placeholder="Enter phone number here" disabled required>
+        </div>
         <input type="password" name="password" id="" class="input1" placeholder="Enter password here" required>
-        <input type="submit" name="" id="" class="submit1">
-        <a href="{% url 'login' %}" class="already1">already have an acoount? Login here</a>
+        <input type="submit" name="" id="submit-btn" class="submit1" disabled>
+        <a href="{% url 'login' %}" class="already1">already have an account? Login here</a>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const countrySelect = document.getElementById('country-select');
+            const phoneNumber = document.getElementById('phone-number');
+            const countryCode = document.getElementById('country-code');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            // Store country data
+            const countries = {
+                'GE': { code: '+995', length: 9 },
+                'RU': { code: '+7', length: 10 },
+                'TR': { code: '+90', length: 10 },
+                'AM': { code: '+374', length: 8 },
+                'AZ': { code: '+994', length: 9 },
+                'UA': { code: '+380', length: 9 },
+                'IL': { code: '+972', length: 9 },
+                'IR': { code: '+98', length: 10 },
+                'KZ': { code: '+7', length: 10 },
+                'DE': { code: '+49', length: 10 },
+                'FR': { code: '+33', length: 9 },
+                'IT': { code: '+39', length: 10 },
+                'ES': { code: '+34', length: 9 },
+                'PL': { code: '+48', length: 9 },
+                'GB': { code: '+44', length: 10 },
+                'US': { code: '+1', length: 10 },
+                'BY': { code: '+375', length: 9 },
+                'UZ': { code: '+998', length: 9 },
+                'AE': { code: '+971', length: 9 },
+                'IN': { code: '+91', length: 10 },
+                'CN': { code: '+86', length: 11 },
+                'OTHER': { code: '+', length: 10 }
+            };
+            
+            // Handle country selection change
+            countrySelect.addEventListener('change', function() {
+                const selectedCountry = this.value;
+                
+                if (selectedCountry) {
+                    // Enable phone field and show country code
+                    phoneNumber.disabled = false;
+                    countryCode.value = countries[selectedCountry].code;
+                    
+                    // Set max length attribute
+                    phoneNumber.maxLength = countries[selectedCountry].length;
+                    
+                    // Clear previous value
+                    phoneNumber.value = '';
+                    
+                    // Update placeholder
+                    phoneNumber.placeholder = `Enter ${countries[selectedCountry].length}-digit phone number`;
+                } else {
+                    // Disable phone field if no country selected
+                    phoneNumber.disabled = true;
+                    countryCode.value = '';
+                    phoneNumber.value = '';
+                    phoneNumber.placeholder = 'Select country first';
+                }
+                
+                validateForm();
+            });
+            
+            // Validate phone number as user types
+            phoneNumber.addEventListener('input', function() {
+                validatePhoneNumber();
+                validateForm();
+            });
+            
+            // Validate phone number format
+            function validatePhoneNumber() {
+                const selectedCountry = countrySelect.value;
+                if (!selectedCountry) return;
+                
+                const expectedLength = countries[selectedCountry].length;
+                const currentLength = phoneNumber.value.length;
+                
+                // Visual feedback
+                if (currentLength === expectedLength) {
+                    phoneNumber.style.borderColor = '#4CAF50'; // Green
+                } else {
+                    phoneNumber.style.borderColor = currentLength > expectedLength ? '#F44336' : '#FF9800'; // Red if too long, orange if too short
+                }
+                
+                // Prevent typing beyond max length
+                if (currentLength > expectedLength) {
+                    phoneNumber.value = phoneNumber.value.slice(0, expectedLength);
+                }
+            }
+            
+            // Enable/disable submit button based on form validity
+            function validateForm() {
+                const isPhoneValid = phoneNumber.value.length === (countrySelect.value ? countries[countrySelect.value].length : 0);
+                submitBtn.disabled = !(countrySelect.value && isPhoneValid);
+            }
+        });
+    </script>
+
+    <style>
+        .phone-input-container {
+            display: flex;
+            width: 100%;
+        }
+        
+        .country-code {
+            width: 70px;
+            height: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        
+        .phone-number {
+            flex: 1;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
 {% endblock %}

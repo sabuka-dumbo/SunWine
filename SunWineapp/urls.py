@@ -11,6 +11,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     path('room/<int:roomid>/', views.room, name="room"),
     path('bought/', views.bought, name="bought"),
+    path('error/', views.error, name="error"),
 
     path('dashboard1/', views.dashboard1, name="dashboard1"),
 ]

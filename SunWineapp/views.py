@@ -221,3 +221,9 @@ def room(request, roomid):
 @login_required
 def bought(request):
     return render(request, "bought.html")
+
+def error_view(request, exception=None):
+    return redirect('error')
+
+def error(request):
+    return render(request, "404.html")

@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/404.css' %}" />
+{% endblock %}
+
+{% block body %}
+    <div class="bought-div">
+        <h1 class="bought-title1">Sorry, looks like something went wrong.</h1>
+        <a href="{% url 'index' %}"><h1 class="bought-title2">go back to main page</h1></a>
+    </div>
+{% endblock %}

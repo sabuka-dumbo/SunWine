@@ -126,6 +126,7 @@ body {
     background-color: #EFC456;
     grid-column-start: 1;
     grid-column-end: 2;
+    object-fit: cover;
 }
 
 .image3 {
@@ -137,6 +138,7 @@ body {
     background-color: #EFC456;
     grid-column-start: 3;
     grid-column-end: 4;
+    object-fit: cover;
 }
 
 .image4 {
@@ -312,6 +314,7 @@ body {
     background-color: #F6F6F6;
     grid-column: 3;
     box-shadow: 25px 25px #977828;
+    object-fit: cover;
 }
 
 .title10 {

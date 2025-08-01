@@ -28,7 +28,7 @@ def services(request):
 def gallery(request):
     return render(request, "gallery.html", {
         "contacts": Contact.objects.first(),
-        "gallery": Gallery.objects.all().get(id=1)
+        "gallery": Gallery.objects.all().first()
     })
 
 def login_view(request):

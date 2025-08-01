@@ -43,6 +43,7 @@
     height: 400px;
     margin-top: 50px;
     background-color: #E5F9FF;
+    object-fit: cover;
 }
 
 @media screen and (max-width: 660px) {

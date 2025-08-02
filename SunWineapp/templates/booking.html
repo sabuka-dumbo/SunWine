@@ -53,8 +53,12 @@ Book Your Stay at Sunwine Hotel Batumi - Makhinjauri / Awara
             {% if results != '' %}
                 {% for i in results %}
                     <div class="searched-div">
-                        <img src="media/{{ i.image1 }}" alt="Room image" class="search-image">
-
+                    {% if i.image1 %}
+                        <img src="{{ i.image1.url }}" alt="Room image" class="search-image">
+                    {% else %}
+                        <img src="{% static 'pics/default-room.jpg' %}" alt="Room image" class="search-image">
+                    {% endif %}
+                    
                         <div class="search-div1">
                             <h1 class="search-title1">{{ i.room_title }}</h1>
                             <h1 class="search-title2">Beds: {{ i.bed }}</h1>

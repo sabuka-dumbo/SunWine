@@ -61,16 +61,28 @@ def register_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         full_name = request.POST.get('full_name')
+        country_code = request.POST.get('country')  # hidden input for code
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
-        phone_number = request.POST.get('phone_number')
+
+        # Combine into full phone number
+        full_phone = f"{country_code}{phone_number}"
 
         if User.objects.filter(username=email).exists():
             print("Email already registered.")
             return redirect('register')
 
-        user = User.objects.create_user(username=email, phone_number=phone_number, full_name=full_name, email=email, password=password)
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password
+        )
         user.first_name = full_name
+
+        # Save phone number if field exists
+        if hasattr(user, "phone_number"):
+            user.phone_number = full_phone  
+
         user.save()
 
         user = authenticate(request, username=email, password=password)
